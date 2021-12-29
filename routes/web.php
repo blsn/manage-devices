@@ -16,3 +16,8 @@ Route::get('/services', [
     'uses' => '\App\Http\Controllers\PagesController@services',
     'as' => 'services'
 ]);
+
+Route::get('/tasks', [
+    'uses' => '\App\Http\Controllers\PagesController@tasks',
+    'as' => 'tasks'
+]);

@@ -15,6 +15,9 @@
         <li class="nav-item">
           <a class="nav-link {{ request()->is('services') ? 'active' : '' }}" href="{{ url('/services') }}">Services</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ request()->is('tasks') ? 'active' : '' }}" href="{{ url('/tasks') }}">Tasks</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown

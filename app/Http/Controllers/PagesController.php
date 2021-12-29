@@ -23,4 +23,9 @@ class PagesController extends Controller
         );
         return view('pages.Services')->with($data);
     }
+
+    public function tasks() {
+        $title = 'Tasks';
+        return view('tasks.index')->with('title', $title);
+    }
 }
