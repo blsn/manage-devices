@@ -11286,3 +11286,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+table.tasks input.status {
+    pointer-events: none;
+}
+
+table.tasks td a:nth-child(2) {
+    color: tomato;
+}
+
+.card.list-summary {
+    max-width: -webkit-max-content;
+    max-width: -moz-max-content;
+    max-width: max-content;
+}
+

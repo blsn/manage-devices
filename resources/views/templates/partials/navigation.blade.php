@@ -29,6 +29,12 @@
 				</li>
 			</ul>
 			<!-- Right Side Of Navbar -->
+			<ul class="nav navbar-nav navbar-right">
+				<li class="nav-item">
+					<a href="{{ route('create') }}" class="btn btn-primary create-btn">Add New Task</a>
+				</li>
+			</ul>
+		
 			<ul class="navbar-nav ms-auto">
 				<!-- Authentication Links -->
 				@guest
