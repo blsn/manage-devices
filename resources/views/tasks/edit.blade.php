@@ -3,7 +3,6 @@
 @section('content')
     <h3>Edit task</h3>
     <p>Update existing task</p>
-    {{-- <form class="form-inline" method="POST" action="{{ route('edit', $task->id) }}"> --}}
     <form class="form-inline" method="POST" action="{{ route('tasks.update', $task->id) }}">
         {{ csrf_field() }}
         {{ method_field('put') }}

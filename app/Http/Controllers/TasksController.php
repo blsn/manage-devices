@@ -89,12 +89,10 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            // return redirect()->route('tasks')->with('danger', $error);
             return redirect()->route('tasks.index')->with('danger', $error);
         }
 
         $task->delete();
-        // return redirect()->route('tasks')->with('info', 'Successful removal of task #' . $task->id); // name on route:list
-        return redirect()->route('tasks.index')->with('info', 'Successful removal of task #' . $task->id); // name on route:list
+        return redirect()->route('tasks.index')->with('info', 'Successful removal of task #' . $task->id);
     }
 }

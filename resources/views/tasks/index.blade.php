@@ -47,18 +47,23 @@
                     <td>{{ $task->name }}</td>
                     <td>{{ date('Y-m-d', strtotime($task->due_date)) }}</td>
                     <td><input class="status" type="checkbox" {{ ($task->status == 1 ? ' checked' : '') }}></td>
-                    {{-- <td><a href="tasks/edit/{{ $task->id }}">Edit</a> | <a href="tasks/delete/{{ $task->id }}">Delete</a></td> --}}
 
-                    <td>
-                        {{-- <a class="btn btn-sm btn-primary" href="{{ route('edit', $task->id) }}">Edit</a> --}}
+                    {{-- <td>
                         <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
                         <button type="button" class="btn btn-sm btn-danger" onclick="event.preventDefault(); document.getElementById('delete-task-form-{{ $task->id }}').submit()">
                             Delete
                         </button>
-                        {{-- <form id="delete-task-form-{{ $task->id }}" action="{{ route('tasks.delete', $task->id) }}" method="POST" style="display: none"> --}}
                         <form id="delete-task-form-{{ $task->id }}" action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: none">
                             @csrf
                             @method("DELETE")
+                        </form>
+                    </td> --}}
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
+                        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" style="display: inline-block;">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     </td>
 

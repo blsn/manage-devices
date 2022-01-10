@@ -3,7 +3,6 @@
 @section('content')
     <h3>Add task</h3>
     <p>Creating a new task</p>
-    {{-- <form class="form-inline" method="POST" action="{{ route('create') }}"> --}}
     <form class="form-inline" method="POST" action="{{ route('tasks.store') }}">
         <div class="row mb-3">
             <label for="name" class="col-sm-1 col-form-label">Task:</label>
