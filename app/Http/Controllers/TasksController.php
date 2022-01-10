@@ -36,7 +36,7 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('tasks.create')->withInput()->with('danger', $error);
+            return redirect()->back()->with('danger', $error);
         }
 
         Task::create([
@@ -70,7 +70,7 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('tasks.edit', [$id])->withInput()->with('danger', $error);
+            return redirect()->back()->with('danger', $error);
         }
         
         $task = Task::find($id);
@@ -89,7 +89,7 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('tasks.index')->with('danger', $error);
+            return redirect()->back()->with('danger', $error);
         }
 
         $task->delete();
