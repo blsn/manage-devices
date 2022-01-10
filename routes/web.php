@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\PagesController::class, 'index'])->name('index');
 Route::get('/about', [App\Http\Controllers\PagesController::class, 'about'])->name('about');
 Route::get('/services', [App\Http\Controllers\PagesController::class, 'services'])->name('services');
-
+/*
 Route::group(['middleware' => 'auth', 'prefix' => 'tasks'], function() {
     Route::get('/', [App\Http\Controllers\TasksController::class, 'index'])->name('tasks');
     Route::get('/create', [App\Http\Controllers\TasksController::class, 'create'])->name('create');
@@ -17,7 +17,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tasks'], function() {
     // Route::get('/delete/{id}', [App\Http\Controllers\TasksController::class, 'destroy'])->name('delete');
     Route::delete('/{id}', [\App\Http\Controllers\TasksController::class, 'destroy'])->name('tasks.delete');    
 });
-// Route::resource('tasks', '\App\Http\Controllers\TasksController');
+*/
+Route::resource('tasks', '\App\Http\Controllers\TasksController')->middleware(['auth']);
 
 // Auth::logout();
 Auth::routes();

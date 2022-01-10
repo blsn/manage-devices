@@ -50,11 +50,13 @@
                     {{-- <td><a href="tasks/edit/{{ $task->id }}">Edit</a> | <a href="tasks/delete/{{ $task->id }}">Delete</a></td> --}}
 
                     <td>
-                        <a class="btn btn-sm btn-primary" href="{{ route('edit', $task->id) }}">Edit</a>
+                        {{-- <a class="btn btn-sm btn-primary" href="{{ route('edit', $task->id) }}">Edit</a> --}}
+                        <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
                         <button type="button" class="btn btn-sm btn-danger" onclick="event.preventDefault(); document.getElementById('delete-task-form-{{ $task->id }}').submit()">
                             Delete
                         </button>
-                        <form id="delete-task-form-{{ $task->id }}" action="{{ route('tasks.delete', $task->id) }}" method="POST" style="display: none">
+                        {{-- <form id="delete-task-form-{{ $task->id }}" action="{{ route('tasks.delete', $task->id) }}" method="POST" style="display: none"> --}}
+                        <form id="delete-task-form-{{ $task->id }}" action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: none">
                             @csrf
                             @method("DELETE")
                         </form>

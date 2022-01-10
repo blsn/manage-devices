@@ -36,14 +36,14 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('create')->withInput()->with('danger', $error);
+            return redirect()->route('tasks.create')->withInput()->with('danger', $error);
         }
 
         Task::create([
             'name' => $request->input('name'),
             'due_date' => $request->input('due_date')
         ]);
-        return redirect()->route('tasks')->with('info', 'The task successfully created');
+        return redirect()->route('tasks.index')->with('info', 'The task successfully created');
     }
 
     /**
@@ -70,7 +70,7 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('edit', [$id])->withInput()->with('danger', $error);
+            return redirect()->route('tasks.edit', [$id])->withInput()->with('danger', $error);
         }
         
         $task = Task::find($id);
@@ -78,7 +78,7 @@ class TasksController extends Controller
         $task->due_date = $request->input('due_date');
         $task->status = is_null($request->input('status')) ? 0 : 1;
         $task->save();
-        return redirect()->route('tasks')->with('info', 'The task successfully updated');
+        return redirect()->route('tasks.index')->with('info', 'The task successfully updated');
     }
 
     public function destroy($id) {
@@ -89,10 +89,12 @@ class TasksController extends Controller
 
         if ($validator->fails()) {
             $error = $validator->errors()->first();
-            return redirect()->route('tasks')->with('danger', $error);
+            // return redirect()->route('tasks')->with('danger', $error);
+            return redirect()->route('tasks.index')->with('danger', $error);
         }
 
         $task->delete();
-        return redirect()->route('tasks')->with('info', 'Successful removal of task #' . $task->id); // name on route:list
+        // return redirect()->route('tasks')->with('info', 'Successful removal of task #' . $task->id); // name on route:list
+        return redirect()->route('tasks.index')->with('info', 'Successful removal of task #' . $task->id); // name on route:list
     }
 }
