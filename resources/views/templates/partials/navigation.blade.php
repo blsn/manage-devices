@@ -27,6 +27,9 @@
 						<li><a class="dropdown-item" href="#">Something else here</a></li>
 					</ul>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Users</a>
+				</li>
 			</ul>
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
