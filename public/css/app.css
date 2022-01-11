@@ -11286,6 +11286,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: #f7f8f9;
+  color: #3a3c42;
+}
 table.tasks input.status {
     pointer-events: none;
 }
