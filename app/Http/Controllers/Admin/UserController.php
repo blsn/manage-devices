@@ -19,7 +19,7 @@ class UserController extends Controller
 
         return view('admin.users.index', [
             'title' => $title,            
-            'users' => User::all()
+            'users' => User::paginate(5)
         ]);
     }
 
@@ -86,6 +86,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect(route('admin.users.index'))->with('info', 'Successful removal of user #' . $id);
     }
 }
