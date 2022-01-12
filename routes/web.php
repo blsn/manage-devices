@@ -20,7 +20,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tasks'], function() {
     Route::delete('/{id}', [\App\Http\Controllers\TasksController::class, 'destroy'])->name('tasks.delete');    
 });
 */
-Route::resource('tasks', '\App\Http\Controllers\TasksController')->middleware(['auth']);
+Route::resource('tasks', '\App\Http\Controllers\TasksController')->middleware(['auth']); // to make like users
 
 // Auth::logout();
 Auth::routes();
