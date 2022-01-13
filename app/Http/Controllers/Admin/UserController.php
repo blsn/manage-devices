@@ -42,7 +42,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->except(['_token', 'roles']));
+        $validator = $request->validate([
+            'name' => 'required|min:2|max:50',
+            'email' => 'required|max:255|unique:users',
+            'password' => 'required|min:8|max:255'
+        ]);
+
+        $user = User::create($validator);
         $user->roles()->sync($request->roles);
         
         return redirect(route('admin.users.index'))->with('info', 'The user successfully created');
@@ -82,11 +88,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($id);
+        $user = User::find($id);
+        if(!$user) {
+            $request->session()->flash('warning', 'You cannot edit this user');
+            return redirect()->back();
+        }
+
         $user->update($request->except('_token', 'roles'));
         $user->roles()->sync($request->roles);
 
-        return redirect(route('admin.users.index'))->with('info', 'Successful updated of user #' . $id);
+        $request->session()->flash('success', 'Successful update of user #' . $id);
+        return redirect()->route('admin.users.index');
     }
 
     /**
