@@ -1,8 +1,13 @@
 @extends('templates.default')
 
 @section('content')
-    <h1>{{ $title }}</h1>
-    <p>Tracking information list</p>
+    <div class="row">
+        <div class="col-12">
+            <h1>{{ $title }}</h1>
+            <a class="btn btn-sm btn-success float-end" href="{{ route('tasks.create') }}" role="button">Add New Task</a>
+            <p>Tracking information list</p>
+        </div>
+    </div>
     <div class="card border-primary mt-4 mb-5 list-summary">
         <div class="card-header">Dashboard</div>
         <div class="card-body text-primary">
