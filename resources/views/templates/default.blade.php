@@ -10,10 +10,19 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
+    {{-- @include('templates.partials.navigation')
+    <div class="container pt-4">
+        @include('templates.partials.alerts')
+        @yield('content')
+    </div> --}}
+
+
     @include('templates.partials.navigation')
+    @include('templates.partials.sidebar')
     <div class="container pt-4">
         @include('templates.partials.alerts')
         @yield('content')
     </div>
+
 </body>
 </html>
